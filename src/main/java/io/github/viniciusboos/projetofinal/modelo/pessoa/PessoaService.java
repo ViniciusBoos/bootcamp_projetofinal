@@ -1,7 +1,5 @@
 package io.github.viniciusboos.projetofinal.modelo.pessoa;
 
-import io.github.viniciusboos.projetofinal.modelo.pessoa.PessoaDTO;
-import io.github.viniciusboos.projetofinal.modelo.pessoa.Pessoa;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,9 +9,22 @@ public class PessoaService {
 
         Pessoa pessoa = new Pessoa();
         pessoa.setNome(pessoaDTO.getNome());
-        pessoa.setSobrenome(pessoaDTO.getSobreNome());
-        pessoa.setIdade(Integer.parseInt(pessoaDTO.getIdade()));
-        pessoa.setStatus(Integer.parseInt(pessoaDTO.getStatus()));
+        pessoa.setSobrenome(pessoaDTO.getSobrenome());
+        pessoa.setIdade(pessoaDTO.getIdade());
+        pessoa.setStatus(pessoaDTO.getStatus());
+        pessoa.setLogin(pessoaDTO.getLogin());
+        pessoa.setSenha(pessoaDTO.getSenha());
+
+        return pessoa;
+    }
+
+    public static Pessoa alterarPessoa(PessoaDTO pessoaDTO, Pessoa pessoa) {
+
+        pessoa.setCodigoPessoa(pessoaDTO.getCodigoPessoa());
+        pessoa.setNome(pessoaDTO.getNome());
+        pessoa.setSobrenome(pessoaDTO.getSobrenome());
+        pessoa.setIdade(pessoaDTO.getIdade());
+        pessoa.setStatus(pessoaDTO.getStatus());
         pessoa.setLogin(pessoaDTO.getLogin());
         pessoa.setSenha(pessoaDTO.getSenha());
 

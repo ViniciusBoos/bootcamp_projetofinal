@@ -1,11 +1,12 @@
 package io.github.viniciusboos.projetofinal.modelo.bairro;
 
-import io.github.viniciusboos.projetofinal.modelo.endereco.Endereco;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.github.viniciusboos.projetofinal.modelo.municipio.Municipio;
-import io.github.viniciusboos.projetofinal.modelo.pessoa.Pessoa;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "TB_BAIRRO")
@@ -16,8 +17,9 @@ public class Bairro {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "codigoBairroSequenceGenerator")
     @SequenceGenerator(name = "codigoBairroSequenceGenerator", sequenceName = "SEQUENCE_BAIRRO",
             allocationSize = 1, initialValue = 1)
-    private Long codigo;
+    private Long codigoBairro;
 
+    @JsonProperty("municipio")
     @JoinColumn(name = "CODIGO_MUNICIPIO")
     @ManyToOne
     private Municipio municipio;
@@ -28,12 +30,12 @@ public class Bairro {
     @Column(name = "STATUS")
     private Integer status;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getCodigoBairro() {
+        return codigoBairro;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setCodigoBairro(Long codigoBairro) {
+        this.codigoBairro = codigoBairro;
     }
 
     public Municipio getMunicipio() {

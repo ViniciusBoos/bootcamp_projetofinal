@@ -11,23 +11,23 @@ public class UF {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "codigoUFSequenceGenerator")
     @SequenceGenerator(name = "codigoUFSequenceGenerator", sequenceName = "SEQUENCE_UF",
             allocationSize = 1, initialValue = 1)
-    private Long codigo;
-
-    @Column(name = "SIGLA")
-    private String sigla;
+    private Long codigoUF;
 
     @Column(name = "NOME")
     private String nome;
 
+    @Column(name = "SIGLA")
+    private String sigla;
+
     @Column(name = "STATUS")
     private Integer status;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getCodigoUF() {
+        return codigoUF;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setCodigoUF(Long codigoUF) {
+        this.codigoUF = codigoUF;
     }
 
     public String getSigla() {
@@ -54,13 +54,4 @@ public class UF {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "UF{" +
-                "codigo=" + codigo +
-                ", sigla='" + sigla + '\'' +
-                ", nome='" + nome + '\'' +
-                ", status=" + status +
-                '}';
-    }
 }

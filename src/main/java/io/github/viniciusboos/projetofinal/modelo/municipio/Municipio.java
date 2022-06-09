@@ -1,5 +1,7 @@
 package io.github.viniciusboos.projetofinal.modelo.municipio;
 
+
+import com.fasterxml.jackson.annotation.*;
 import io.github.viniciusboos.projetofinal.modelo.uf.UF;
 
 import javax.persistence.*;
@@ -13,8 +15,9 @@ public class Municipio {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "codigoMunicipioSequenceGenerator")
     @SequenceGenerator(name = "codigoMunicipioSequenceGenerator", sequenceName = "SEQUENCE_MUNICIPIO",
             allocationSize = 1, initialValue = 1)
-    private Long codigo;
+    private Long codigoMunicipio;
 
+    @JsonProperty("uf")
     @JoinColumn(name = "CODIGO_UF")
     @ManyToOne
     private UF uf;
@@ -25,12 +28,12 @@ public class Municipio {
     @Column(name = "STATUS")
     private Integer status;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getCodigoMunicipio() {
+        return codigoMunicipio;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setCodigoMunicipio(Long codigoMunicipio) {
+        this.codigoMunicipio = codigoMunicipio;
     }
 
     public UF getUf() {

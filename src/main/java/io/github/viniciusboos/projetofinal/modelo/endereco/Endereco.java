@@ -1,5 +1,9 @@
 package io.github.viniciusboos.projetofinal.modelo.endereco;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.github.viniciusboos.projetofinal.modelo.bairro.Bairro;
 import io.github.viniciusboos.projetofinal.modelo.pessoa.Pessoa;
 
@@ -14,18 +18,22 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "codigoEnderecoSequenceGenerator")
     @SequenceGenerator(name = "codigoEnderecoSequenceGenerator", sequenceName = "SEQUENCE_ENDERECO",
             allocationSize = 1, initialValue = 1)
-    private Long codigo;
+    private Long codigoEndereco;
 
+    @JsonProperty("codigoPessoa")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityInfo(property = "codigoPessoa", generator = ObjectIdGenerators.PropertyGenerator.class)
     @JoinColumn(name = "CODIGO_PESSOA")
     @ManyToOne
     private Pessoa pessoa;
 
+    @JsonProperty("bairro")
     @JoinColumn(name = "CODIGO_BAIRRO")
     @ManyToOne
     private Bairro bairro;
 
     @Column(name = "NOME_RUA")
-    private String rua;
+    private String nomeRua;
 
     @Column(name = "NUMERO")
     private String numero;
@@ -36,12 +44,12 @@ public class Endereco {
     @Column(name = "CEP")
     private String cep;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getCodigoEndereco() {
+        return codigoEndereco;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setCodigoEndereco(Long codigoEndereco) {
+        this.codigoEndereco = codigoEndereco;
     }
 
     public Pessoa getPessoa() {
@@ -60,12 +68,12 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public String getRua() {
-        return rua;
+    public String getNomeRua() {
+        return nomeRua;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setNomeRua(String nomeRua) {
+        this.nomeRua = nomeRua;
     }
 
     public String getNumero() {

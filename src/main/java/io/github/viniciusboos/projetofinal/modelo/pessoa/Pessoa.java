@@ -1,9 +1,6 @@
 package io.github.viniciusboos.projetofinal.modelo.pessoa;
 
-import io.github.viniciusboos.projetofinal.modelo.endereco.Endereco;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "TB_PESSOA")
@@ -14,7 +11,7 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "codigoPessoaSequenceGenerator")
     @SequenceGenerator(name = "codigoPessoaSequenceGenerator", sequenceName = "SEQUENCE_PESSOA",
             allocationSize = 1, initialValue = 1)
-    private Long codigo;
+    private Long codigoPessoa;
 
     @Column(name = "NOME")
     private String nome;
@@ -34,12 +31,12 @@ public class Pessoa {
     @Column(name = "STATUS", length = 3)
     private Integer status;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getCodigoPessoa() {
+        return codigoPessoa;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setCodigoPessoa(Long codigoPessoa) {
+        this.codigoPessoa = codigoPessoa;
     }
 
     public String getNome() {
